@@ -1,0 +1,18 @@
+%h2 Similar Movies page for #{@movie.title}
+
+%ul
+  %li
+    Director:
+    = @movie.director
+  %li
+    Other Movies with same director:
+    %tbody
+    - @movies.each do |movie|
+      %tr
+        %td= movie.title 
+        %td= movie.rating
+        %td= movie.release_date
+        %td= movie.director
+        %td= link_to "More about #{movie.title}", movie_path(movie)
+
+= link_to 'Back to movie list', movies_path
